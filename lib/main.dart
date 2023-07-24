@@ -1,10 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:internship_assignment/constants/global_variables.dart';
-import 'package:internship_assignment/presentation/screens/search_screen.dart';
+import 'dart:io';
 
-import 'presentation/screens/home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internship_assignment/constants/global_variables.dart';
+import 'package:internship_assignment/logic/cubits/product_cubit/product_cubit.dart';
+import 'package:internship_assignment/logic/cubits/searchModel_cubit/search_model_cubit.dart';
+import 'package:internship_assignment/presentation/screens/SearchScreen/search_screen.dart';
+
+import 'presentation/screens/HomeScreen/home_screen.dart';
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 
@@ -13,19 +26,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ProductCubit()),
+        BlocProvider(create: (context) => SearchModelCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        scrollBehavior: CustomScrollBehavior(),
+        home: const HomeScreen(),
+        routes: {
+          HomeScreen.routeName: (context) => const HomeScreen(),
+          SearchScreen.routeName: (context) => const SearchScreen(),
+        },
       ),
-      scrollBehavior: CustomScrollBehavior(),
-      home: const HomeScreen(),
-      routes: {
-        HomeScreen.routeName: (context) => const HomeScreen(),
-        SearchScreen.routeName: (context) => const SearchScreen(),
-      },
     );
   }
 }
