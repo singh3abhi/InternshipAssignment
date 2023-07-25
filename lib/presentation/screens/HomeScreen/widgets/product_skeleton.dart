@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:internship_assignment/data/models/getListings/product_item_model.dart';
+import 'package:internship_assignment/logic/services/formatter.dart';
 
 class ProductSkeleton extends StatelessWidget {
   const ProductSkeleton({
@@ -24,10 +26,17 @@ class ProductSkeleton extends StatelessWidget {
               child: Stack(
                 children: [
                   Center(
-                    child: Image.network(
-                      item.defaultImage!.fullImage!,
-                      height: 115,
-                      fit: BoxFit.fitHeight,
+                    child: Container(
+                      height: 120,
+                      width: 100,
+                      color: Colors.red,
+                      child: Center(
+                        child: CachedNetworkImage(
+                          imageUrl: item.images![1].fullImage!,
+                          placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                        ),
+                      ),
                     ),
                   ),
                   const Positioned(
@@ -42,7 +51,7 @@ class ProductSkeleton extends StatelessWidget {
               ),
             ),
             Text(
-              '₹ ${item.listingNumPrice}',
+              '₹ ${Formatter.formatPrice(item.listingNumPrice!)}',
               style: const TextStyle(
                 fontSize: 16.5,
                 height: 0,
@@ -104,7 +113,7 @@ class ProductSkeleton extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  item.listingDate!,
+                  Formatter.formatDate(item.listingDate!),
                   style: TextStyle(
                     fontSize: 9.5,
                     color: Colors.black.withOpacity(0.6),

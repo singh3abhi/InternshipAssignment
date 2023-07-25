@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internship_assignment/presentation/screens/NotificationScreen/notification_screen.dart';
 
 class AppBarHeader extends StatelessWidget {
   const AppBarHeader({
@@ -33,21 +34,26 @@ class AppBarHeader extends StatelessWidget {
             ),
           ],
         ),
-        const Row(
+        Row(
           children: [
-            Text(
+            const Text(
               'India',
               style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
-            Icon(
+            const Icon(
               Icons.location_on,
               color: Colors.white,
               size: 30,
             ),
-            Icon(
-              Icons.notifications_none_sharp,
-              color: Colors.white,
-              size: 30,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, NotificationScreen.routeName);
+              },
+              child: const Icon(
+                Icons.notifications_none_sharp,
+                color: Colors.white,
+                size: 30,
+              ),
             ),
           ],
         ),

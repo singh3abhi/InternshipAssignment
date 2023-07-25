@@ -24,6 +24,45 @@ class GlobalVariables {
     ShopByCategoryItem(name: 'Phones with Warranty', imageURL: 'assets/ShopBy/4.png'),
     ShopByCategoryItem(name: 'Shop By Price', imageURL: 'assets/ShopBy/5.png'),
   ];
+
+  static const List<FilterDataItem> filtersList = [
+    FilterDataItem(
+      name: 'Brand',
+      filterList: [],
+    ),
+    FilterDataItem(
+      name: 'Ram',
+      filterList: [],
+    ),
+    FilterDataItem(
+      name: 'Storage',
+      filterList: [],
+    ),
+    FilterDataItem(
+      name: 'Conditions',
+      filterList: [],
+    ),
+    FilterDataItem(
+      name: 'Warranty',
+      filterList: [
+        'Brand Warranty',
+        'Seller Warranty'
+      ],
+    ),
+    FilterDataItem(
+      name: 'Verification',
+      filterList: [
+        'Verified'
+      ],
+    ),
+  ];
+}
+
+class FilterDataItem {
+  final String name;
+  final List<String> filterList;
+
+  const FilterDataItem({required this.name, required this.filterList});
 }
 
 class ShopByCategoryItem {

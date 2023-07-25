@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:internship_assignment/constants/global_variables.dart';
-import 'package:internship_assignment/logic/product_cubit/product_cubit.dart';
-import 'package:internship_assignment/logic/product_cubit/product_state.dart';
+import 'package:internship_assignment/logic/cubits/getFilters_cubit/get_filters_cubit.dart';
+import 'package:internship_assignment/logic/cubits/product_cubit/product_cubit.dart';
+import 'package:internship_assignment/logic/cubits/product_cubit/product_state.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/categorylist_component.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/custom_app_bar_delegate.dart';
+import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/custoom_modal_bottom_sheet.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/products_component.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/shopbylist_component.dart';
 
@@ -21,6 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   final PageController _controller = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<GetFiltersCubit>(context).intialize();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,34 +95,60 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 10, 0, 5),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              'Best Deals Near You',
-                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black54),
-                            ),
-                            const SizedBox(width: 6),
-                            Container(
-                              padding: const EdgeInsets.only(
-                                bottom: 0, // Space between underline and text
-                              ),
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.amber,
-                                    width: 1.5, // Underline thickness
+                            Row(
+                              children: [
+                                const Text(
+                                  'Best Deals Near You',
+                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black54),
+                                ),
+                                const SizedBox(width: 6),
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                    bottom: 0, // Space between underline and text
+                                  ),
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Colors.amber,
+                                        width: 1.5, // Underline thickness
+                                      ),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    "India",
+                                    style: TextStyle(
+                                      color: Colors.amber,
+                                      fontSize: 20,
+                                      height: 0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              child: const Text(
-                                "India",
-                                style: TextStyle(
-                                  color: Colors.amber,
-                                  fontSize: 20,
-                                  height: 0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                              ],
                             ),
+                            GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet<dynamic>(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  enableDrag: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (context) => const CustomModelBottomSheet(),
+                                );
+                              },
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    'Filter',
+                                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/Icons/filter.png', height: 20),
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       ),

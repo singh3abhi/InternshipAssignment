@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internship_assignment/logic/product_cubit/product_cubit.dart';
-import 'package:internship_assignment/logic/product_cubit/product_state.dart';
+import 'package:internship_assignment/logic/cubits/product_cubit/product_cubit.dart';
+import 'package:internship_assignment/logic/cubits/product_cubit/product_state.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/product_skeleton.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/shimmer_product_skeleton.dart';
 
@@ -19,7 +19,7 @@ class ProductComponent extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
-                itemCount: state.products.length,
+                itemCount: state.products.isEmpty ? 4 : state.products.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

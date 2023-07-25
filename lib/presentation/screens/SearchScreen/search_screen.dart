@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internship_assignment/constants/global_variables.dart';
-import 'package:internship_assignment/logic/searchModel_cubit/search_model_cubit.dart';
-import 'package:internship_assignment/logic/searchModel_cubit/search_model_state.dart';
+import 'package:internship_assignment/logic/cubits/searchModel_cubit/search_model_cubit.dart';
+import 'package:internship_assignment/logic/cubits/searchModel_cubit/search_model_state.dart';
 import 'package:internship_assignment/presentation/screens/SearchScreen/widgets/custom_app_bar.dart';
 
 class SearchScreen extends StatefulWidget {

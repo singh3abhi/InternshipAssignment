@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internship_assignment/constants/global_variables.dart';
+import 'package:internship_assignment/logic/cubits/getFilters_cubit/get_filters_cubit.dart';
 import 'package:internship_assignment/logic/cubits/product_cubit/product_cubit.dart';
 import 'package:internship_assignment/logic/cubits/searchModel_cubit/search_model_cubit.dart';
+import 'package:internship_assignment/presentation/screens/NotificationScreen/notification_screen.dart';
 import 'package:internship_assignment/presentation/screens/SearchScreen/search_screen.dart';
 
 import 'presentation/screens/HomeScreen/home_screen.dart';
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => ProductCubit()),
         BlocProvider(create: (context) => SearchModelCubit()),
+        BlocProvider(create: (context) => GetFiltersCubit()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -43,6 +46,7 @@ class MyApp extends StatelessWidget {
         routes: {
           HomeScreen.routeName: (context) => const HomeScreen(),
           SearchScreen.routeName: (context) => const SearchScreen(),
+          NotificationScreen.routeName: (context) => const NotificationScreen(),
         },
       ),
     );

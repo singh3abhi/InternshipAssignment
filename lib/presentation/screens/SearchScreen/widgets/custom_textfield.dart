@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internship_assignment/logic/searchModel_cubit/search_model_cubit.dart';
+import 'package:internship_assignment/logic/cubits/searchModel_cubit/search_model_cubit.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
