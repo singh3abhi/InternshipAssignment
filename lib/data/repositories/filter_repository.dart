@@ -5,13 +5,13 @@ import 'package:internship_assignment/data/models/getFilters/filter_item_model.d
 class FilterRepository {
   final _api = Api();
 
-  Future<Filters> fetchFilters() async {
+  Future<FiltersModel> fetchFilters() async {
     try {
       Response response = await _api.sendRequest.get('/getFilters?isLimited=true');
 
       ApiResponse apiResponse = ApiResponse.fromResponse(response, 'filters');
 
-      return Filters.fromJson(apiResponse.data);
+      return FiltersModel.fromJson(apiResponse.data);
     } catch (ex) {
       rethrow;
     }
