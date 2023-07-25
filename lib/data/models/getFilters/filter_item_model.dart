@@ -1,12 +1,12 @@
-class Filters {
+class FiltersModel {
   List<String>? make;
   List<String>? condition;
   List<String>? storage;
   List<String>? ram;
 
-  Filters({this.make, this.condition, this.storage, this.ram});
+  FiltersModel({this.make, this.condition, this.storage, this.ram});
 
-  Filters.fromJson(Map<String, dynamic> json) {
+  FiltersModel.fromJson(Map<String, dynamic> json) {
     make = json['make'].cast<String>();
     condition = json['condition'].cast<String>();
     storage = json['storage'].cast<String>();
