@@ -42,7 +42,7 @@ class ProductSkeleton extends StatelessWidget {
                               ),
                             ),
                           ),
-                          placeholder: (context, url) => const Center(child: SizedBox()),
+                          placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) => const Icon(Icons.error),
                           maxWidthDiskCache: 150,
                           maxHeightDiskCache: 150,
