@@ -37,7 +37,7 @@ Add the Header
    header - Authorization
    value -  key = AAAAJTjOfCY:APA91bEtJcXnFqV9o2Ep_N3svDspmKFoeT8cC4wyYcT9-nas3zFaMkhdoHmE8yKhWW8gJPsTutEYKvjoyurylEpVc7fyVFtwN2y56mVtKtK53wIuZ-gCk9GJqQWZq_Tawdgp7lXPCUc9
 ```
-To get the device token run the code in debug mode and copy the device token from debug console <br />
+To get the device token run the code in debug mode and copy the device token from debug console. Sometimes Device refreshes the token so make sure u are using latest token before sending post request. <br />
 Body:
 ```bash
    {
