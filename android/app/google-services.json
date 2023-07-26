@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "159866846246",
+    "project_id": "flutter-notifications-ed014",
+    "storage_bucket": "flutter-notifications-ed014.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159866846246:android:cb9ecbfd41710aee8f3ae7",
+        "android_client_info": {
+          "package_name": "com.oruphones.internship_assignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159866846246-gsajjvg67bvd4bhjqp7mj5e3ni6cdt0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCngM4iGJi576YBhEhoBMrsBEsTvSBWXJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159866846246-gsajjvg67bvd4bhjqp7mj5e3ni6cdt0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

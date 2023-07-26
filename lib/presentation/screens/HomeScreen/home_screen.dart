@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:internship_assignment/constants/global_variables.dart';
+import 'package:internship_assignment/data/repositories/notification_repository.dart';
 import 'package:internship_assignment/logic/cubits/getFilters_cubit/get_filters_cubit.dart';
 import 'package:internship_assignment/logic/cubits/product_cubit/product_cubit.dart';
 import 'package:internship_assignment/logic/cubits/product_cubit/product_state.dart';
+import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/banner_component.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/categorylist_component.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/custom_app_bar_delegate.dart';
 import 'package:internship_assignment/presentation/screens/HomeScreen/widgets/custoom_modal_bottom_sheet.dart';
@@ -22,12 +24,29 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final PageController _controller = PageController();
+  NotificationServices notificationServices = NotificationServices();
 
   @override
   void initState() {
     super.initState();
     BlocProvider.of<GetFiltersCubit>(context).intialize();
+    notificationServices.requestNotificationPermission();
+    notificationServices.firebaseInit(context);
+    notificationServices.setupInteractMessage(context);
+    notificationServices.getDeviceToken().then((value) {
+      // if (kDebugMode) {
+      //   print('Device Token');
+      //   print(value);
+      // }
+      // print('Device Token');
+      // print(value);
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImage(const AssetImage("assets/Logo/logo.png"), context);
+    super.didChangeDependencies();
   }
 
   @override
@@ -36,9 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: GlobalVariables.backgroundColor,
         key: scaffoldKey,
-        drawer: const Drawer(
-          child: Text('create drawer widget tree here'),
-        ),
         body: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (notification) {
             if (notification.leading) {
@@ -68,22 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const CategoryListComponent(),
-                      SizedBox(
-                        height: 180,
-                        child: PageView.builder(
-                          controller: _controller,
-                          itemCount: 4,
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => SizedBox(
-                            child: Image.asset(
-                              'assets/Banners/banner$index.png',
-                              height: 180,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                      ),
+                      const BannerComponent(),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(15, 10, 0, 5),
                         child: Text(

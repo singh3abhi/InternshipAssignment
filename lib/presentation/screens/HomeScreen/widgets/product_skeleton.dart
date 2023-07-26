@@ -27,15 +27,38 @@ class ProductSkeleton extends StatelessWidget {
                 children: [
                   Center(
                     child: Container(
-                      height: 120,
-                      width: 100,
-                      color: Colors.red,
+                      color: Colors.white,
                       child: Center(
                         child: CachedNetworkImage(
                           imageUrl: item.images![1].fullImage!,
-                          placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                          imageBuilder: (context, imageProvider) => Container(
+                            width: 100.0,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) => const Center(child: SizedBox()),
                           errorWidget: (context, url, error) => const Icon(Icons.error),
+                          maxWidthDiskCache: 150,
+                          maxHeightDiskCache: 150,
                         ),
+                        // child: CachedNetworkImage(
+                        //   imageUrl: item.images![1].fullImage!,
+                        //   placeholder: (context, url) => const Center(child: SizedBox()),
+                        //   errorWidget: (context, url, error) => const Icon(Icons.error),
+                        //   maxWidthDiskCache: 150,
+                        //   maxHeightDiskCache: 150,
+                        //   fadeInDuration: Duration.zero,
+                        //   fadeOutDuration: Duration.zero,
+                        //   fit: BoxFit.contain,
+                        //   height: 100,
+                        //   width: 100,
+                        // ),
                       ),
                     ),
                   ),
