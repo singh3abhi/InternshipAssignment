@@ -1,6 +1,6 @@
 # Internship Assignment For ORU Phones
 
-I created the Internship Assignment with Flutter as Frontend and used Bloc pattern design. I have also implemented Cubit for the app's State Management.
+I created the required Internship Assignment with Flutter as a front-end client and used Bloc pattern design because it helps in separating the data, logic, and the UI part. I have also implemented Cubit for the app's State Management which is an effective way of managing the state.
 
 For Caching Images I have used the cached_network_image package which helps in Caching network images and when the next time image is requested instead of downloading again it shows the images from cache memory.
 
