@@ -32,7 +32,7 @@ We can send push Notifications by making post api
 ```bash
    https://fcm.googleapis.com/fcm/send
 ```
-Add the Header
+Add the Header (FCM Server key)
 ```bash
    header - Authorization
    value -  key = AAAAJTjOfCY:APA91bEtJcXnFqV9o2Ep_N3svDspmKFoeT8cC4wyYcT9-nas3zFaMkhdoHmE8yKhWW8gJPsTutEYKvjoyurylEpVc7fyVFtwN2y56mVtKtK53wIuZ-gCk9GJqQWZq_Tawdgp7lXPCUc9
