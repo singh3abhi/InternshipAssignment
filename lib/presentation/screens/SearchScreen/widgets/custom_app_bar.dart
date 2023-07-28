@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: 87,
       backgroundColor: GlobalVariables.primaryColor,
       flexibleSpace: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+        padding: EdgeInsets.fromLTRB(12, MediaQuery.of(context).padding.top, 12, 5),
         child: Column(
           children: [
             AppBarHeader(scaffoldKey: scaffoldKey),
