@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:internship_assignment/constants/global_variables.dart';
 
 class CategoryListComponent extends StatelessWidget {
   const CategoryListComponent({
@@ -19,10 +18,10 @@ class CategoryListComponent extends StatelessWidget {
           const SizedBox(width: 15),
           Container(
             height: 75,
-            width: (GlobalVariables.brandCategoryImages.length + 1) * (77 + 10) - 10,
+            width: (8 + 1) * (77 + 10) - 10,
             color: Colors.grey.shade100.withOpacity(0.3),
             child: ListView.separated(
-              itemCount: GlobalVariables.brandCategoryImages.length + 1,
+              itemCount: 8 + 1,
               physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               separatorBuilder: (context, index) => const SizedBox(width: 10),
@@ -31,14 +30,14 @@ class CategoryListComponent extends StatelessWidget {
                   height: 67,
                   width: 77,
                   decoration: BoxDecoration(
-                    color: index == GlobalVariables.brandCategoryImages.length ? Colors.grey.shade400 : Colors.white,
+                    color: index == 8 ? Colors.grey.shade400 : Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                    child: index == GlobalVariables.brandCategoryImages.length
+                    child: index == 8
                         ? const Text('Show all')
                         : Image.asset(
-                            GlobalVariables.brandCategoryImages[index],
+                            'assets/Categories/${index + 1}.png',
                             height: 70,
                             width: 50,
                           ),

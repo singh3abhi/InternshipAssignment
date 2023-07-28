@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:internship_assignment/presentation/screens/NotificationScreen/notification_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 class AppBarHeader extends StatelessWidget {
   const AppBarHeader({
@@ -28,7 +29,7 @@ class AppBarHeader extends StatelessWidget {
             ),
             const SizedBox(width: 20),
             Image.asset(
-              'assets/Logo/logo.png',
+              'assets/Logo/logo1.png',
               height: 32,
               color: Colors.white,
             ),
@@ -47,7 +48,8 @@ class AppBarHeader extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, NotificationScreen.routeName);
+                Navigator.push(context, PageTransition(child: const NotificationScreen(), type: PageTransitionType.theme));
+                // Navigator.pushNamed(context, NotificationScreen.routeName);
               },
               child: const Icon(
                 Icons.notifications_none_sharp,

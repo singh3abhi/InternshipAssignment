@@ -6,17 +6,6 @@ class GlobalVariables {
   static const primaryColor = Color.fromARGB(255, 44, 46, 67);
   static const backgroundColor = Colors.white;
 
-  static const List<String> brandCategoryImages = [
-    'assets/Categories/apple.png',
-    'assets/Categories/samsung.png',
-    'assets/Categories/mi.png',
-    'assets/Categories/vivo.png',
-    'assets/Categories/oneplus.png',
-    'assets/Categories/oppo.png',
-    'assets/Categories/motorola.png',
-    'assets/Categories/realme.png',
-  ];
-
   static const List<ShopByCategoryItem> shopByCategoryList = [
     ShopByCategoryItem(name: 'Bestselling Mobiles', imageURL: 'assets/ShopBy/1.png'),
     ShopByCategoryItem(name: 'Verified Devices Only', imageURL: 'assets/ShopBy/2.png'),
