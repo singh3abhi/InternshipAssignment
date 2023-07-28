@@ -13,27 +13,25 @@ class NotificationScreen extends StatelessWidget {
     //     statusBarIconBrightness: Brightness.light,
     //   ),
     // );
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: GlobalVariables.backgroundColor,
-        appBar: AppBar(
-          title: const Text(
-            'Notification',
-            style: TextStyle(color: Colors.white),
-          ),
-          automaticallyImplyLeading: false,
-          leading: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: const Icon(
-                Icons.arrow_back_ios_new_outlined,
-                color: Colors.white,
-              )),
-          backgroundColor: GlobalVariables.primaryColor,
-          centerTitle: true,
+    return Scaffold(
+      backgroundColor: GlobalVariables.backgroundColor,
+      appBar: AppBar(
+        title: const Text(
+          'Notification',
+          style: TextStyle(color: Colors.white),
         ),
-        body: const Center(
-          child: Text('There is No Notification found in your account'),
-        ),
+        automaticallyImplyLeading: false,
+        leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: const Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: Colors.white,
+            )),
+        backgroundColor: GlobalVariables.primaryColor,
+        centerTitle: true,
+      ),
+      body: const Center(
+        child: Text('There is No Notification found in your account'),
       ),
     );
   }
