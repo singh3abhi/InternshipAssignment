@@ -46,6 +46,8 @@ dependencies:
   flutter_local_notifications: ^15.1.0+1
   app_settings: ^5.0.0
   flutter_native_splash: ^2.3.1
+  page_transition: ^2.0.9
+  flutter_cache_manager: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +62,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/Logo/logo.png
+  image: assets/SplashImage.png
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
