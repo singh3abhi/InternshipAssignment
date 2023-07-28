@@ -1,11 +1,15 @@
 # Internship Assignment For ORU Phones
 
-I created the required Internship Assignment with Flutter as a front-end client and used Bloc pattern design because it helps in separating the data, logic, and the UI part. I have also implemented Cubit for the app's State Management which is an effective way of managing the state.
+I created the required Internship Assignment with Flutter as a front-end client and Bloc pattern for application design because it helps in separating the data, logic, and the UI part. I have also implemented Cubit for the app's State Management which is an effective way of managing the state.
 
-For Caching Images I have used the cached_network_image package which helps in Caching network images and when the next time image is requested instead of downloading again it shows the images from cache memory.
+## Image Caching
+I have used Cached_network_package for caching the network images, When the image is loaded the first time it takes several seconds depending on the size, once it is loaded Cached_Network_Image caches the image in the temp directory, and the next time when a similar image is requested to load it fetches the image from memory thus saving the time of making API request and downloading the image.
+
+## Memory Management
+We have used caching in the application which sometimes leads to big junk of cache memory, So I came up with the solution that the user only requires image cache data when the app is in Running State, As soon as the app goes into Background or Terminated State there is no use of that image cache because next time on start of application it will make new api request and new data will be fetched, So I implemented logic in main.dart that when app goes in Background or Terminated State it will clear Image cache thus making our app memory efficient.
 
 ## Sample Video and Apk File
-https://drive.google.com/drive/folders/1Q6nHD8Tf0HJyDIOFzxKa3EdrxdoCGr4V?usp=sharing
+https://drive.google.com/drive/u/0/folders/1RRblR35-nFbWNKDBxpN5LRz_wW2qMStp
 
 
 ## Installation
