@@ -125,7 +125,7 @@ class CacheClearObserver extends WidgetsBindingObserver {
       imageCache.clear();
       imageCache.clearLiveImages();
 
-      print('Background State');
+      // print('Background State');
     }
   }
 }

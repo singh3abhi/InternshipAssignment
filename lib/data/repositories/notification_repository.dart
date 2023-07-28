@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:internship_assignment/presentation/screens/NotificationScreen/notification_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 // Get token for sending the push notification to the respective device
 class NotificationServices {
@@ -119,7 +120,8 @@ class NotificationServices {
 
   void handleMessage(BuildContext context, RemoteMessage message) {
     if (message.data['type'] == 'Notification') {
-      Navigator.pushNamed(context, NotificationScreen.routeName);
+      // Navigator.pushNamed(context, NotificationScreen.routeName);
+      Navigator.push(context, PageTransition(child: const NotificationScreen(), type: PageTransitionType.theme));
     }
   }
 }
