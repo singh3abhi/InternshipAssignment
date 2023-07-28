@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:internship_assignment/constants/global_variables.dart';
 import 'package:internship_assignment/logic/cubits/getFilters_cubit/get_filters_cubit.dart';
@@ -34,6 +35,8 @@ Future<void> main() async {
   await Firebase.initializeApp();
   HttpOverrides.global = MyHttpOverrides();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  final observer = CacheClearObserver();
+  WidgetsBinding.instance.addObserver(observer);
   runApp(const MyApp());
   FlutterNativeSplash.remove();
 }
@@ -71,8 +74,6 @@ class MyApp extends StatelessWidget {
 class CustomScrollBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
-    // When modifying this function, consider modifying the implementation in
-    // the base class ScrollBehavior as well.
     late final AndroidOverscrollIndicator indicator;
     indicator = AndroidOverscrollIndicator.glow;
     // if (Theme.of(context).useMaterial3) {
@@ -105,5 +106,26 @@ class CustomScrollBehavior extends ScrollBehavior {
       color: GlobalVariables.primaryColor,
       child: child,
     );
+  }
+}
+
+class CacheClearObserver extends WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    super.didChangeAppLifecycleState(state);
+
+    if (state == AppLifecycleState.paused) {
+      // The app is being paused (backgrounded) or terminated
+      // Clear the cache when the app is terminated or put in the background
+      // await CachedNetworkImage.evictFromCache('https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1666344481.20013313!500x500.png');
+      // imageCache.clear();
+      // imageCache.clearLiveImages();
+
+      await DefaultCacheManager().emptyCache();
+      imageCache.clear();
+      imageCache.clearLiveImages();
+
+      print('Background State');
+    }
   }
 }
